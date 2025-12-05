@@ -6,5 +6,5 @@ export const splitByNewLine = (filePath: string): string[] => {
 };
 export const splitByRegex = (filePath: string, regex: RegExp): string[] => {
   const data = readFileSync(filePath, "utf-8");
-  return data.match(regex) ?? [];
+  return data.split(regex) ?? [];
 };

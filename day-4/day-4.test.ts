@@ -6,7 +6,6 @@ import { splitByNewLine } from "../utils/utils.ts"
 describe("Day 4", () => { 
   const data = splitByNewLine("day-4/test-data.txt").map(x => x.split(""));
   test("Part One", () => {
-
     strictEqual(printingDepartment(data), 13); // * 1395
   });
 

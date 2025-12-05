@@ -7,7 +7,7 @@ export const printingDepartment = (
     removePaperRolls: false,
     total: 0,
   }
-) => {
+): number => {
   const paperRoll = "@";
   let paperTotal = 0;
   const { removePaperRolls, total } = partTwo;
