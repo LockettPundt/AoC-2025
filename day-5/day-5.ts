@@ -7,22 +7,15 @@ export const cafeteria = (input: string[], findAllRangeIds = false) => {
   const numberIsInRange = (
     number: number,
     ranges: number[][]
-  ): { range?: number[]; rangeIndex: number } => {
-    let rangeIndex = 0;
-    const range = ranges.find((range, index) => {
+  ): number[] | undefined => {
+    return ranges.find((range) => {
       const [low, high] = range;
-      // Check if number is in range (not adjacent, just overlapping)
       if (number >= low && number <= high) {
-        rangeIndex = index;
         return true;
       } else {
         return false;
       }
     });
-    return {
-      range,
-      rangeIndex,
-    };
   };
 
   if (findAllRangeIds) {
@@ -44,14 +37,12 @@ export const cafeteria = (input: string[], findAllRangeIds = false) => {
       }
     }
     
-    const total = mergedRanges.reduce((sum, [low, high]) => {
+    return mergedRanges.reduce((sum, [low, high]) => {
       return sum += (high - low) + 1;
     }, 0);
-
-    return total;
   } else {
     return numbers.reduce((sum, numberString) => {
-      if (numberIsInRange(Number(numberString), ranges).range) {
+      if (numberIsInRange(Number(numberString), ranges)) {
         sum += 1;
       }
       return sum;
